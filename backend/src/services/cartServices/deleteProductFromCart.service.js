@@ -4,7 +4,7 @@ import { populateCart } from "../../lib/helpers/cartPopulator.service.js";
 import { AppError } from "../../utils/error.js"
 
 const deleteProductFromCartService = async (userId, productId) => {
-  const cart = await Cart.findOneAndUpdate({ userId, status: 1 });
+  const cart = await Cart.findOne({ userId, status: 1 });
   if (!cart) {
     throw new AppError("Cart not found", 404);
   }

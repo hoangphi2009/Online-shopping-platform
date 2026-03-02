@@ -31,8 +31,8 @@ const CartList = () => {
   return (
     <div>
       {products.length > 0 ? (
-        products.map((product, index) => (
-          <CartItem key={index} product={product} />
+        products.map((product) => (
+          <CartItem key={product.productId._id} product={product} />
         ))
       ) : (
         <CartEmpty />

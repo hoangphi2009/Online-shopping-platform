@@ -12,7 +12,7 @@ const CartEmpty = () => {
   return (
     <div className={cx("emptyCart")}>
       <img
-        src="/sadness-cart.webp"
+        src="/sadness-cart.svg"
         alt={t("components.shared.emptyCart.title")}
         className={cx("emptyCartImage")}
       />
