@@ -1,0 +1,116 @@
+{
+  "components": {
+    "ui": {
+      "footer": {
+        "footer_left": {
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione officia at, quam laudantium unde ea nisi vitae, minus quia eaque perferendis beatae quisquam placeat illo? Maxime praesentium dolores illo inventore.",
+          "follow_us": "Follow us: "
+        },
+        "footer_bottom": {
+          "copyright": "© {{year}} Online Shopping Platform. All rights reserved.",
+          "privacy_policy": "Privacy Policy",
+          "terms_of_service": "Terms of Service",
+          "cookie_policy": "Cookie Policy"
+        },
+        "footer_links": {
+          "quick_links": {
+            "title": "Quick Links",
+            "home": "Home",
+            "best_sellers": "Best Sellers",
+            "categories": "Categories",
+            "offers_deals": "Offers & Deals",
+            "about_us": "About Us"
+          },
+          "customer_service": {
+            "title": "Customer Service",
+            "delivery_info": "Delivery Information",
+            "return_refund": "Return & Refund Policy",
+            "payment_methods": "Payment Methods",
+            "track_order": "Track Your Order",
+            "faqs": "FAQs"
+          },
+          "contact_us": {
+            "title": "Contact Us",
+            "blog": "Blog",
+            "careers": "Careers",
+            "press": "Press",
+            "newsletter": "Newsletter",
+            "networks": "Networks"
+          }
+        }
+      },
+      "product": {
+        "favorite_badge": "Hot",
+        "description_title": "Product Description",
+        "add_to_cart_success": "Product added to cart successfully",
+        "add_to_cart_error": "Failed to add product to cart",
+        "stats": {
+          "reviews": "Reviews",
+          "sold": "Sold"
+        },
+        "quantity": {
+          "label": "Quantity",
+          "in_stock": "IN STOCK",
+          "out_of_stock": "OUT OF STOCK"
+        },
+        "actions": {
+          "add_to_cart": "Add to Cart",
+          "buy_now": "Buy Now"
+        },
+        "related_products": {
+          "title": "Related Products",
+          "view_more": "View More"
+        },
+        "reviews": {
+          "title": "Product Reviews",
+          "filter": {
+            "all": "All",
+            "with_images": "With Images",
+            "stars": "Stars",
+            "star": "Star"
+          },
+          "out_of": "out of",
+          "with_comments": "With Comments",
+          "with_images": "With Images"
+        }
+      },
+      "button": {
+        "back": "Go Back"
+      },
+      "cart": {
+        "header": {
+          "product": "Product",
+          "unit_price": "Unit Price",
+          "quantity": "Quantity",
+          "total_price": "Total Price",
+          "actions": "Actions"
+        },
+        "item": {
+          "category_label": "Category:",
+          "delete": "Delete",
+          "similar": "Similar",
+          "add_voucher": "Add shop voucher",
+          "shipping_discount": "Save {{amount}} on shipping for orders over {{minimum}}",
+          "learn_more": "Learn more",
+          "delete_success": "Item removed from cart successfully",
+          "delete_failed": "Failed to remove item from cart"
+        },
+        "footer": {
+          "voucher_title": "OSP Voucher",
+          "select_voucher": "Select or enter code",
+          "select_all": "Select all ({{count}})",
+          "delete": "Delete",
+          "remove_unavailable": "Remove unavailable items",
+          "save_favorite": "Save to favorites",
+          "total": "Total ({{count}} items): ",
+          "buy_now": "Buy Now",
+          "delete_success": "Selected items deleted successfully",
+          "delete_failed": "Failed to delete items",
+          "remove_unavailable_success": "Unavailable items removed successfully",
+          "remove_unavailable_failed": "Failed to remove unavailable items",
+          "no_unavailable_products": "No unavailable items in the cart"
+        }
+      }
+    }
+  }
+}

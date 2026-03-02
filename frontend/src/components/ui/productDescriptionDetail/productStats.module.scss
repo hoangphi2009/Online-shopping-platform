@@ -1,0 +1,23 @@
+.stats-section {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: #666;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+
+    .rating {
+        color: #ffa500;
+        font-weight: 600;
+    }
+
+    .divider {
+        color: #d1d5db;
+    }
+
+    .reviews,
+    .sold {
+        color: #666;
+    }
+}

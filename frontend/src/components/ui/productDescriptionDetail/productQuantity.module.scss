@@ -1,0 +1,65 @@
+.quantity-section {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+
+  .label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
+    min-width: 60px;
+  }
+
+  .quantity-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d1d5db;
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  .quantity-btn {
+    border: none;
+    width: 36px;
+    height: 36px;
+    background-color: #fff;
+    color: #2db894;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    line-height: 1;
+    border: 1px solid #e5e5e5;
+  }
+
+  .quantity-input {
+    width: 60px;
+    height: 36px;
+    border: none;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #1f2937;
+    background-color: #fff;
+    outline: none;
+    padding: 0;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  .stock-status {
+    font-size: 0.875rem;
+  }
+}

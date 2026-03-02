@@ -1,0 +1,116 @@
+{
+  "components": {
+    "ui": {
+      "footer": {
+        "footer_left": {
+          "description": "Chúng tôi mang đến trải nghiệm mua sắm trực tuyến tuyệt vời với những sản phẩm chất lượng cao và dịch vụ khách hàng xuất sắc. Hãy khám phá bộ sưu tập đa dạng và tìm kiếm sản phẩm hoàn hảo cho bạn.",
+          "follow_us": "Theo dõi chúng tôi: "
+        },
+        "footer_bottom": {
+          "copyright": "© {{year}} Nền Tảng Mua Sắm. Bảo lưu mọi quyền.",
+          "privacy_policy": "Chính sách Bảo mật",
+          "terms_of_service": "Điều khoản Dịch vụ",
+          "cookie_policy": "Chính sách Cookie"
+        },
+        "footer_links": {
+          "quick_links": {
+            "title": "Liên Kết Nhanh",
+            "home": "Trang Chủ",
+            "best_sellers": "Bán Chạy",
+            "categories": "Danh Mục",
+            "offers_deals": "Ưu Đãi & Khuyến Mãi",
+            "about_us": "Về Chúng Tôi"
+          },
+          "customer_service": {
+            "title": "Dịch Vụ Khách Hàng",
+            "delivery_info": "Thông Tin Giao Hàng",
+            "return_refund": "Chính Sách Đổi Trả & Hoàn Tiền",
+            "payment_methods": "Phương Thức Thanh Toán",
+            "track_order": "Theo Dõi Đơn Hàng",
+            "faqs": "Câu Hỏi Thường Gặp"
+          },
+          "contact_us": {
+            "title": "Liên Hệ",
+            "blog": "Blog",
+            "careers": "Tuyển Dụng",
+            "press": "Báo Chí",
+            "newsletter": "Bản Tin",
+            "networks": "Mạng Lưới"
+          }
+        }
+      },
+      "product": {
+        "favorite_badge": "Yêu thích",
+        "description_title": "Mô tả sản phẩm",
+        "add_to_cart_success": "Thêm sản phẩm vào giỏ hàng thành công",
+        "add_to_cart_error": "Có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng",
+        "stats": {
+          "reviews": "Đánh giá",
+          "sold": "Đã bán"
+        },
+        "quantity": {
+          "label": "Số lượng",
+          "in_stock": "CÒN HÀNG",
+          "out_of_stock": "HẾT HÀNG"
+        },
+        "actions": {
+          "add_to_cart": "Thêm vào giỏ hàng",
+          "buy_now": "Mua ngay"
+        },
+        "related_products": {
+          "title": "Sản phẩm liên quan",
+          "view_more": "Xem thêm"
+        },
+        "reviews": {
+          "title": "Đánh giá sản phẩm",
+          "filter": {
+            "all": "Tất cả",
+            "with_images": "Có hình ảnh",
+            "stars": "Sao",
+            "star": "Sao"
+          },
+          "out_of": "trên",
+          "with_comments": "Có Bình Luận",
+          "with_images": "Có Hình Ảnh"
+        }
+      },
+      "button": {
+        "back": "Quay lại"
+      },
+      "cart": {
+        "header": {
+          "product": "Sản phẩm",
+          "unit_price": "Đơn giá",
+          "quantity": "Số lượng",
+          "total_price": "Số tiền",
+          "actions": "Lựa chọn khác"
+        },
+        "item": {
+          "category_label": "Phân loại:",
+          "delete": "Xóa",
+          "similar": "Tương tự",
+          "add_voucher": "Thêm voucher của shop",
+          "shipping_discount": "Giảm {{amount}} phí vận chuyển đơn tối thiểu {{minimum}}",
+          "learn_more": "Tìm hiểu thêm",
+          "delete_success": "Xóa sản phẩm khỏi giỏ hàng thành công",
+          "delete_failed": "Xóa sản phẩm khỏi giỏ hàng thất bại"
+        },
+        "footer": {
+          "voucher_title": "OSP Voucher",
+          "select_voucher": "Chọn hoặc nhập mã",
+          "select_all": "Chọn tất cả ({{count}})",
+          "delete": "Xoá",
+          "remove_unavailable": "Bỏ sản phẩm không còn hàng",
+          "save_favorite": "Lưu vào mục yêu thích",
+          "total": "Tổng cộng ({{count}} sản phẩm): ",
+          "buy_now": "Mua hàng",
+          "delete_success": "Xóa sản phẩm đã chọn thành công",
+          "delete_failed": "Xóa sản phẩm thất bại",
+          "remove_unavailable_success": "Đã xóa các sản phẩm hết hàng",
+          "remove_unavailable_failed": "Xóa sản phẩm hết hàng thất bại",
+          "no_unavailable_products": "Không có sản phẩm hết hàng trong giỏ hàng"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "components": {
+    "shared": {
+      "intro": {
+        "welcome_text": "Chào mừng đến với",
+        "highlight_text": "Nền tảng Mua sắm Trực tuyến",
+        "description": "Chúng tôi mang đến trải nghiệm mua sắm trực tuyến tuyệt vời với những sản phẩm chất lượng cao và dịch vụ khách hàng xuất sắc. Hãy khám phá bộ sưu tập đa dạng và tìm kiếm sản phẩm hoàn hảo cho bạn. Sự hài lòng của bạn là ưu tiên hàng đầu của chúng tôi.",
+        "shop_now": "Mua ngay",
+        "learn_more": "Tìm hiểu thêm"
+      },
+      "navbar": {
+        "dashboard": "Trang chủ",
+        "shop": "Cửa hàng",
+        "about": "Giới thiệu",
+        "search_placeholder": "Tìm kiếm sản phẩm..."
+      },
+      "profile": {
+        "anonymous": "Ẩn danh",
+        "my_account": "Tài khoản của tôi",
+        "my_orders": "Đơn mua",
+        "logout": "Đăng xuất",
+        "logout_success": "Đăng xuất thành công",
+        "logout_failed": "Đăng xuất thất bại"
+      },
+      "confirm": {
+        "title": "Xác nhận",
+        "confirm": "Xác nhận",
+        "cancel": "Hủy",
+        "add_to_cart": "Bạn có muốn thêm sản phẩm này vào giỏ hàng không?",
+        "delete_item": "Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng?",
+        "delete_selected_items": "Bạn có chắc chắn muốn xóa tất cả sản phẩm đã chọn khỏi giỏ hàng?",
+        "remove_unavailable_items": "Bạn có chắc chắn muốn xóa tất cả sản phẩm hết hàng khỏi giỏ hàng?",
+        "login_required": "Vui lòng đăng nhập để thực hiện hành động này"
+      },
+      "emptyCart": {
+        "title": "Giỏ hàng trống",
+        "message": "Bạn chưa có sản phẩm nào trong giỏ hàng",
+        "shopping_button": "Tiếp tục mua sắm",
+        "login_message": "Vui lòng đăng nhập"
+      }
+    },
+    "home": {
+      "products": {
+        "title": "Sản phẩm bán chạy nhất",
+        "description": "Sản phẩm được yêu thích bởi hàng ngàn khách hàng",
+        "get_more_information": "Xem thêm",
+        "stock_available": "Còn {{count}} sản phẩm",
+        "out_of_stock": "Hết hàng",
+        "hot": "Nổi bật",
+        "unit": "đơn vị",
+        "no_products": "Không có sản phẩm nào"
+      }
+    }
+  }
+}

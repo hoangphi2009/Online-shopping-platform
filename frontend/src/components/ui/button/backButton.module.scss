@@ -1,0 +1,28 @@
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: #6b7280;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: auto;
+    width: fit-content;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+        background: none;
+        color: #38ef7d;
+    }
+
+    .back-icon {
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    .back-text {
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+}

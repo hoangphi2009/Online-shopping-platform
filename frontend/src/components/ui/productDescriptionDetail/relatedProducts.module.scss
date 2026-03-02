@@ -1,0 +1,42 @@
+.related-products-container {
+
+    .section-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+        margin: 1rem 6rem 2rem 6rem;
+        gap: 2rem;
+    }
+
+    .view-more-container {
+        display: flex;
+        justify-content: center;
+        margin: 2rem 2rem;
+    }
+
+    .view-more-btn {
+        background: #fff;
+        color: #6b7280;
+        border: 1px solid #d1d5db;
+        padding: 0.75rem 2rem;
+        border-radius: 4px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: #f9fafb;
+            border-color: #a1a1aa;
+            color: #374151;
+        }
+    }
+}

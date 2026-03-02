@@ -1,0 +1,55 @@
+{
+  "components": {
+    "shared": {
+      "confirm": {
+        "title": "Confirm",
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "add_to_cart": "Do you want to add this product to your cart?",
+        "delete_item": "Are you sure you want to remove this item from your cart?",
+        "delete_selected_items": "Are you sure you want to remove all selected items from your cart?",
+        "remove_unavailable_items": "Are you sure you want to remove all unavailable items from your cart?",
+        "login_required": "Please log in to perform this action"
+      },
+      "intro": {
+        "welcome_text": "Welcome to Our",
+        "highlight_text": "Online Shopping Platform",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione officia at, quam laudantium unde ea nisi vitae, minus quia eaque perferendis beatae quisquam placeat illo? Maxime praesentium dolores illo inventore.",
+        "shop_now": "Shop Now",
+        "learn_more": "Learn More"
+      },
+      "navbar": {
+        "dashboard": "Dashboard",
+        "shop": "Shop",
+        "about": "About",
+        "search_placeholder": "Search products..."
+      },
+      "profile": {
+        "anonymous": "Anonymous",
+        "my_account": "My Account",
+        "my_orders": "My Orders",
+        "logout": "Logout",
+        "logout_success": "Logout successful",
+        "logout_failed": "Logout failed"
+      },
+      "emptyCart": {
+        "title": "Empty Cart",
+        "message": "You have no items in your cart yet",
+        "shopping_button": "Continue Shopping",
+        "login_message": "Please log in"
+      }
+    },
+    "home": {
+      "products": {
+        "title": "Our Best Selling Products",
+        "description": "Top products loved by thousands of customers",
+        "get_more_information": "More Information",
+        "stock_available": "{{count}} products available",
+        "out_of_stock": "Out of stock",
+        "hot": "Hot",
+        "unit": "unit",
+        "no_products": "No products available"
+      }
+    }
+  }
+}

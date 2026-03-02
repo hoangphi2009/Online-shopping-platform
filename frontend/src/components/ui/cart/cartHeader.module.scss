@@ -1,0 +1,56 @@
+.cartHeader {
+    background-color: #fff;
+    padding: 20px 20px;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .05);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e5e5;
+
+    .productSection {
+        display: flex;
+        align-items: center;
+        width: 30%;
+
+        .checkboxContainer {
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .productLabel {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(0, 0, 0, .8);
+            text-transform: capitalize;
+
+            span {
+                user-select: none;
+            }
+        }
+    }
+
+    .headerInfo {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 70%;
+        gap: 50px;
+        padding-right: 20px;
+
+        .headerItem {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(0, 0, 0, .54);
+            text-align: center;
+            user-select: none;
+            text-transform: capitalize;
+            min-width: 80px;
+        }
+    }
+}

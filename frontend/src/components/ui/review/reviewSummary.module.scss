@@ -1,0 +1,39 @@
+.rating-summary {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+
+    .overall-rating {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+
+        .rating-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #dc2626;
+        }
+
+        .rating-text {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+    }
+
+    .additional-info {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.85rem;
+        color: #6b7280;
+
+        .info-item {
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            padding: 0.25rem 0.5rem;
+        }
+    }
+}

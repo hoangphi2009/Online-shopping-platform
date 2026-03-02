@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #f7f7f7;
+  --secondary: #008080;
+  --text-color: #124874;
+  --white: #fff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: var(--white);
+  text-align: center;
+  margin-top: 50px;
+}
