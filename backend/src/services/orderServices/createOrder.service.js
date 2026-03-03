@@ -31,6 +31,8 @@ const createOrderService = async (userId, orderData) => {
   // Bước 5: Tính tổng giá trị đơn hàng (subtotal)
   const subtotal = calculateCartTotal(cart.products);
   const totalAmount = subtotal - discount;
+  console.log("subtotal", subtotal);
+  console.log("totalAmount", totalAmount);
 
   // Bước 6: Sinh mã đơn hàng
   const orderNumber = generateOrderNumber();
