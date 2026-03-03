@@ -163,6 +163,59 @@
           "remove_unavailable_failed": "Xóa sản phẩm hết hàng thất bại",
           "no_unavailable_products": "Không có sản phẩm hết hàng trong giỏ hàng"
         }
+      },
+      "account": {
+        "sidebar": {
+          "edit_profile": "Sửa Hồ Sơ",
+          "notifications": "Thông Báo",
+          "my_account": "Tài Khoản Của Tôi",
+          "profile": "Hồ Sơ",
+          "address": "Địa Chỉ",
+          "change_password": "Đổi Mật Khẩu",
+          "notification_settings": "Cài Đặt Thông Báo",
+          "personal_info": "Thông Tin Cá Nhân",
+          "orders": "Đơn Mua",
+          "vouchers": "Kho Voucher"
+        },
+        "profile": {
+          "title": "Hồ Sơ Của Tôi",
+          "subtitle": "Quản lý thông tin hồ sơ để bảo mật tài khoản",
+          "fields": {
+            "first_name": "Họ",
+            "last_name": "Tên",
+            "full_name": "Họ & Tên",
+            "email": "Email",
+            "phone": "Số điện thoại",
+            "address": "Địa chỉ",
+            "age": "Tuổi",
+            "role": "Vai trò"
+          },
+          "roles": {
+            "user": "Người dùng",
+            "seller": "Người bán",
+            "admin": "Quản trị viên"
+          },
+          "avatar": {
+            "choose": "Chọn Ảnh",
+            "max_size": "Dung lượng file tối đa 1 MB",
+            "format": "Định dạng: JPEG, .PNG"
+          },
+          "edit": {
+            "save": "Lưu",
+            "cancel": "Hủy",
+            "saving": "Đang lưu...",
+            "success": "Cập nhật hồ sơ thành công",
+            "error": "Cập nhật hồ sơ thất bại",
+            "not_editable": "Không thể thay đổi",
+            "placeholder": {
+              "first_name": "Nhập họ",
+              "last_name": "Nhập tên",
+              "phone": "Nhập số điện thoại",
+              "address": "Nhập địa chỉ",
+              "age": "Nhập tuổi"
+            }
+          }
+        }
       }
     }
   }
