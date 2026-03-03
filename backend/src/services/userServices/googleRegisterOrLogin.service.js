@@ -15,11 +15,7 @@ const buildUserResponse = (user) => {
     ...userWithoutSensitive
   } = userObj;
 
-  return {
-    ...userWithoutSensitive,
-    role:
-      user.role === 2 ? "admin" : user.role === 1 ? "shop" : "user",
-  };
+  return userWithoutSensitive;
 };
 
 const googleRegisterOrLoginService = async (googleData) => {

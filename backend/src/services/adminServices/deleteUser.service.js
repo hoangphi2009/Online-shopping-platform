@@ -11,7 +11,7 @@ const deleteUserService = async (userId) => {
       return "User không tồn tại";
     }
 
-    if (user.role === 'admin') {
+    if (user.role === 2) {
       return "Không thể xóa tài khoản admin";
     }
 
