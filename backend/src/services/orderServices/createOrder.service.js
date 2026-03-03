@@ -17,29 +17,35 @@ const createOrderService = async (userId, orderData) => {
   if (!isStockAvailable(cart.products)) {
     throw new Error("Insufficient stock available");
   }
-  const { shippingAddress, paymentMethod, notes } = orderData;
+  const { shippingAddress, paymentMethod, notes, discount = 0 } = orderData;
   if (!shippingAddress) {
     throw new Error("Shipping address is required");
   }
-  // Bước 4: Tính tổng giá trị đơn hàng (subtotal)
-  // @Todo Cần điều chỉnh logic của discount
-  const subtotal = calculateCartTotal(cart.products);
-  const totalAmount = subtotal - (orderData?.discount || 0);
 
-  // @Todo sau xong thì bỏ mã đơn hàng
-  // Bước 5: Sinh mã đơn hàng
+  // Bước 4: Chỉ lấy sản phẩm được chọn (selected)
+  const selectedProducts = cart.products.filter((item) => item.selected);
+  if (selectedProducts.length === 0) {
+    throw new Error("No products selected");
+  }
+
+  // Bước 5: Tính tổng giá trị đơn hàng (subtotal)
+  const subtotal = calculateCartTotal(cart.products);
+  const totalAmount = subtotal - discount;
+
+  // Bước 6: Sinh mã đơn hàng
   const orderNumber = generateOrderNumber();
 
-  // Bước 6: Chuẩn bị products theo đúng schema của Order model
-  const orderProducts = cart.products.map((item) => ({
+  // Bước 7: Chuẩn bị products theo đúng schema của Order model
+  const orderProducts = selectedProducts.map((item) => ({
     productId: item.productId._id,
     name: item.productId.name,
     image: item.productId.image[0],
     quantity: item.quantity,
-    price: calculateItemPrice(item),
-    total: calculateItemTotal(calculateItemPrice(item), item.quantity),
+    price: calculateItemPrice(item.productId),
+    total: calculateItemTotal(calculateItemPrice(item.productId), item.quantity),
   }));
-  // Bước 7: Tạo 1 đơn hàng mới (new Order)
+
+  // Bước 8: Tạo 1 đơn hàng mới (new Order)
   const newOrder = new Order({
     userId,
     orderNumber,
@@ -47,7 +53,7 @@ const createOrderService = async (userId, orderData) => {
     products: orderProducts,
     shippingAddress,
     paymentMethod,
-    paymentStatus: paymentMethod === "online" ? "paid" : "pending", //@Todo: chỉnh theo model
+    paymentStatus: paymentMethod === "online" ? "paid" : "pending",
     orderStatus: "pending",
     subtotal,
     discount,
@@ -56,11 +62,14 @@ const createOrderService = async (userId, orderData) => {
   });
   await newOrder.save();
 
-  // Bước 8: Trừ tồn kho
-  await decreaseProductStock(cart.products);
+  // Bước 9: Trừ tồn kho và tăng số lượng bán
+  await decreaseProductStock(selectedProducts);
+  await increaseSoldOfProducts(selectedProducts);
 
-  // Bước 9: Tăng số lượng được bán của sản phẩm
-  await increaseSoldOfProducts(cart.products);
+  // Bước 10: Xóa các sản phẩm đã đặt khỏi giỏ hàng
+  cart.products = cart.products.filter((item) => !item.selected);
+  cart.totalAmount = await calculateCartTotal(cart.products);
+  await cart.save();
   const populatedOrder = await populateOrder(newOrder._id);
   return populatedOrder;
 };

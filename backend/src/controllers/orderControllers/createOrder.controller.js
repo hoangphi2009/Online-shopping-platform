@@ -14,7 +14,8 @@ const createOrderController = async (req, res) => {
     if (
       error.message === "Cart is empty" ||
       error.message === "Insufficient stock available" ||
-      error.message === "Shipping address is required"
+      error.message === "Shipping address is required" ||
+      error.message === "No products selected"
     ) {
       return res.status(400).json({
         message: error.message,

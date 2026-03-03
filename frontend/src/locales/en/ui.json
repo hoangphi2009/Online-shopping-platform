@@ -77,6 +77,59 @@
       "button": {
         "back": "Go Back"
       },
+      "checkout": {
+        "title": "Checkout",
+        "back_to_cart": "Back to Cart",
+        "place_order": "Place Order",
+        "placing_order": "Placing order...",
+        "delivery": {
+          "title": "Delivery Address",
+          "recipient_name": "Recipient Name",
+          "recipient_placeholder": "Enter full name",
+          "phone": "Phone Number",
+          "phone_placeholder": "Enter phone number",
+          "address": "Delivery Address",
+          "address_placeholder": "House number, street, ward, district, city"
+        },
+        "payment": {
+          "title": "Payment Method",
+          "cod": "Cash on Delivery (COD)",
+          "cod_desc": "Pay with cash when you receive the order",
+          "online": "Online Payment",
+          "coming_soon": "Coming soon"
+        },
+        "notes": {
+          "title": "Order Notes",
+          "placeholder": "Notes for the seller (optional)"
+        },
+        "summary": {
+          "title": "Order Summary",
+          "subtotal": "Subtotal",
+          "shipping": "Shipping Fee",
+          "free": "Free",
+          "total": "Total"
+        },
+        "errors": {
+          "recipient_required": "Please enter the recipient's name",
+          "phone_required": "Please enter a phone number",
+          "address_required": "Please enter a delivery address",
+          "no_products": "No products selected",
+          "submit_failed": "Order failed, please try again"
+        }
+      },
+      "orderSuccess": {
+        "title": "Order Placed Successfully!",
+        "subtitle": "Thank you for your purchase. Your order is being processed.",
+        "order_number": "Order Number",
+        "shipping_address": "Shipping Address",
+        "payment_method": "Payment Method",
+        "products": "Products",
+        "subtotal": "Subtotal",
+        "discount": "Discount",
+        "total": "Total",
+        "continue_shopping": "Continue Shopping",
+        "back_to_cart": "View Cart"
+      },
       "cart": {
         "header": {
           "product": "Product",
