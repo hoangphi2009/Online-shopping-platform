@@ -95,6 +95,8 @@ const CheckoutPage = () => {
         dispatch(removeSelectedProducts());
         dispatch(calculateTotalAmount());
         navigate("/order-success", { state: { order: res.data.order } });
+      } else {
+        toast.error(res.data.message || t("components.ui.checkout.errors.submit_failed"));
       }
     } catch (error) {
       const msg = error.response?.data?.message;
