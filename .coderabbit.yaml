@@ -14,13 +14,7 @@ reviews:
     drafts: false
     # Allow reviews on all base branches (not just the default branch)
     base_branches:
-      - "main"
-      - "develop"
-      - "feature/.*"
-      - "fix/.*"
-      - "hotfix/.*"
-      - "release/.*"
-      - "chore/.*"
+      - ".*"
 
   # Provide high-quality review details
   profile: "chill"
