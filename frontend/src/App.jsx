@@ -7,6 +7,8 @@ import Login from "./components/auth/login/Login.jsx";
 import Register from "./components/auth/register/Register.jsx";
 import ProductDetailPage from "./components/ui/productDescriptionDetail/ProductDetailPage.jsx";
 import MainCartLayout from "./components/shared/layout/MainCartLayout.jsx";
+import CheckoutPage from "./components/ui/checkout/CheckoutPage.jsx";
+import OrderSuccessPage from "./components/ui/orderSuccess/OrderSuccessPage.jsx";
 import ScrollTop from "./components/control/scroll/ScrollTop.jsx";
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/product/:productId" element={<ProductDetailPage />} />
             <Route path="/cart" element={<MainCartLayout />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/order-success" element={<OrderSuccessPage />} />
           </Route>
 
           <Route element={<AuthLayout />}>

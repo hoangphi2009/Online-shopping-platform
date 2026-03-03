@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTicket } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
@@ -22,6 +23,7 @@ const cx = classNames.bind(styles);
 
 const CartFooter = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartProducts = useSelector((state) => state.cart.products);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
@@ -212,7 +214,11 @@ const CartFooter = () => {
             </span>
             <span className={cx("totalPrice")}>{formatPrice(totalAmount)}</span>
           </div>
-          <Button className={cx("btn")}>
+          <Button
+            className={cx("btn")}
+            onClick={() => navigate("/checkout")}
+            disabled={selectedCount === 0}
+          >
             {t("components.ui.cart.footer.buy_now")}
           </Button>
         </div>
