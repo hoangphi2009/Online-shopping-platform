@@ -210,9 +210,19 @@
             "placeholder": {
               "first_name": "Enter first name",
               "last_name": "Enter last name",
+              "email": "Enter email",
               "phone": "Enter phone number",
               "address": "Enter address",
               "age": "Enter age"
+            },
+            "required": {
+              "first_name": "First name is required",
+              "last_name": "Last name is required",
+              "email": "Email is required"
+            },
+            "validation": {
+              "email_invalid": "Invalid email address",
+              "email_taken": "Email is already used by another account"
             }
           }
         }

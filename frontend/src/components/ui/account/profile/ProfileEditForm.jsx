@@ -7,19 +7,14 @@ import { toast } from "sonner";
 import axios from "axios";
 import { setUser } from "../../../../redux/authSlice";
 import { BACKEND_URL_ENDPOINT } from "../../../../constants/constants";
-import { ROLE_KEYS, SELECTABLE_ROLE_KEYS } from "../../../../constants.js";
+import { SELECTABLE_ROLE_KEYS } from "../../../../constants.js";
+import { validateProfileForm, EMAIL_REGEX } from "../../../../CustomValidates.js";
+import RequireTag from "../../../../utils/RequireTag.jsx";
 import styles from "./profile.module.scss";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 const P = "components.ui.account.profile";
-
-const EditFieldRow = ({ label, children }) => (
-  <div className={cx("fieldRow")}>
-    <label className={cx("fieldLabel")}>{label}</label>
-    {children}
-  </div>
-);
 
 const ProfileEditForm = ({ user, fullName, onDone }) => {
   const { t } = useTranslation();
@@ -27,18 +22,22 @@ const ProfileEditForm = ({ user, fullName, onDone }) => {
   const { accessToken } = useSelector((state) => state.auth);
 
   const [form, setForm] = useState({
-    firstName: user?.firstName ?? "",
-    lastName: user?.lastName ?? "",
+    firstName: user?.firstName,
+    lastName: user?.lastName,
+    email: user?.email ?? "",
     phoneNumber: user?.phoneNumber ?? "",
-    address: user?.address ?? "",
+    address: user?.address,
     age: user?.age ?? "",
     role: user?.role ?? 0,
   });
+  const [errors, setErrors] = useState({});
   const [avatarFile, setAvatarFile] = useState(null);
   const [avatarPreview, setAvatarPreview] = useState(user?.avatar ?? null);
   const [submitting, setSubmitting] = useState(false);
 
   const fileInputRef = useRef(null);
+
+  const validate = () => validateProfileForm(form, t);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,6 +45,9 @@ const ProfileEditForm = ({ user, fullName, onDone }) => {
       ...prev,
       [name]: name === "role" ? Number(value) : value,
     }));
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   };
 
   const handleFileChange = (e) => {
@@ -57,6 +59,11 @@ const ProfileEditForm = ({ user, fullName, onDone }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
     setSubmitting(true);
     try {
       const formData = new FormData();
@@ -81,8 +88,16 @@ const ProfileEditForm = ({ user, fullName, onDone }) => {
       dispatch(setUser(data.data));
       toast.success(t(`${P}.edit.success`));
       onDone();
-    } catch {
-      toast.error(t(`${P}.edit.error`));
+    } catch (err) {
+      const serverMsg = err?.response?.data?.message ?? "";
+      if (serverMsg.toLowerCase().includes("email")) {
+        setErrors((prev) => ({
+          ...prev,
+          email: t(`${P}.edit.validation.email_taken`),
+        }));
+      } else {
+        toast.error(t(`${P}.edit.error`));
+      }
     } finally {
       setSubmitting(false);
     }
@@ -92,48 +107,77 @@ const ProfileEditForm = ({ user, fullName, onDone }) => {
     <form onSubmit={handleSubmit} className={cx("profileBody")}>
       {/* Fields */}
       <div className={cx("profileFields")}>
-        <EditFieldRow label={t(`${P}.fields.first_name`)}>
-          <input
-            className={cx("fieldInput")}
+        <div className={cx("fieldRow")}>
+          <label className={cx("fieldLabel")}>
+            {t(`${P}.fields.first_name`)}
+            <RequireTag required />
+          </label>
+          <RequireTag
             name="firstName"
             value={form.firstName}
             onChange={handleChange}
             placeholder={t(`${P}.edit.placeholder.first_name`)}
-          />
-        </EditFieldRow>
-
-        <EditFieldRow label={t(`${P}.fields.last_name`)}>
-          <input
+            validateFn={(val) => !val?.trim() ? t(`${P}.edit.required.first_name`) : null}
+            externalError={errors.firstName}
             className={cx("fieldInput")}
+          />
+        </div>
+
+        <div className={cx("fieldRow")}>
+          <label className={cx("fieldLabel")}>
+            {t(`${P}.fields.last_name`)}
+            <RequireTag required />
+          </label>
+          <RequireTag
             name="lastName"
             value={form.lastName}
             onChange={handleChange}
             placeholder={t(`${P}.edit.placeholder.last_name`)}
+            validateFn={(val) => !val?.trim() ? t(`${P}.edit.required.last_name`) : null}
+            externalError={errors.lastName}
+            className={cx("fieldInput")}
           />
-        </EditFieldRow>
+        </div>
 
-        <EditFieldRow label={t(`${P}.fields.full_name`)}>
+        <div className={cx("fieldRow")}>
+          <label className={cx("fieldLabel")}>{t(`${P}.fields.full_name`)}</label>
           <span className={cx("fieldValue", "fieldReadonly")}>{fullName}</span>
-        </EditFieldRow>
+        </div>
 
-        <EditFieldRow label={t(`${P}.fields.email`)}>
-          <span className={cx("fieldValue", "fieldReadonly")}>
-            {user?.email ?? "-"}
-            <small className={cx("notEditable")}>{t(`${P}.edit.not_editable`)}</small>
-          </span>
-        </EditFieldRow>
+        <div className={cx("fieldRow")}>
+          <label className={cx("fieldLabel")}>
+            {t(`${P}.fields.email`)}
+            <RequireTag required />
+          </label>
+          <RequireTag
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            placeholder={t(`${P}.edit.placeholder.email`)}
+            validateFn={(val) => {
+              if (!val?.trim()) return t(`${P}.edit.required.email`);
+              if (!EMAIL_REGEX.test(val.trim())) return t(`${P}.edit.validation.email_invalid`);
+              return null;
+            }}
+            externalError={errors.email}
+            className={cx("fieldInput")}
+          />
+        </div>
 
-        <EditFieldRow label={t(`${P}.fields.phone`)}>
+        <div className={cx("fieldRow")}>
+          <label className={cx("fieldLabel")}>{t(`${P}.fields.phone`)}</label>
           <input
             className={cx("fieldInput")}
             name="phoneNumber"
+            type="number"
             value={form.phoneNumber}
             onChange={handleChange}
             placeholder={t(`${P}.edit.placeholder.phone`)}
           />
-        </EditFieldRow>
+        </div>
 
-        <EditFieldRow label={t(`${P}.fields.address`)}>
+        <div className={cx("fieldRow")}>
+          <label className={cx("fieldLabel")}>{t(`${P}.fields.address`)}</label>
           <input
             className={cx("fieldInput")}
             name="address"
@@ -141,9 +185,10 @@ const ProfileEditForm = ({ user, fullName, onDone }) => {
             onChange={handleChange}
             placeholder={t(`${P}.edit.placeholder.address`)}
           />
-        </EditFieldRow>
+        </div>
 
-        <EditFieldRow label={t(`${P}.fields.age`)}>
+        <div className={cx("fieldRow")}>
+          <label className={cx("fieldLabel")}>{t(`${P}.fields.age`)}</label>
           <input
             className={cx("fieldInput")}
             name="age"
@@ -154,9 +199,10 @@ const ProfileEditForm = ({ user, fullName, onDone }) => {
             onChange={handleChange}
             placeholder={t(`${P}.edit.placeholder.age`)}
           />
-        </EditFieldRow>
+        </div>
 
-        <EditFieldRow label={t(`${P}.fields.role`)}>
+        <div className={cx("fieldRow")}>
+          <label className={cx("fieldLabel")}>{t(`${P}.fields.role`)}</label>
           <select
             className={cx("fieldInput", "roleSelect", `role-${form.role}`)}
             name="role"
@@ -169,7 +215,7 @@ const ProfileEditForm = ({ user, fullName, onDone }) => {
               </option>
             ))}
           </select>
-        </EditFieldRow>
+        </div>
 
         {/* Action buttons */}
         <div className={cx("editActions")}>

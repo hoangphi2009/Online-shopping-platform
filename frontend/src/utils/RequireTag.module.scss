@@ -1,0 +1,25 @@
+.inputWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.fieldError {
+  border-color: #ee4d2d !important;
+  box-shadow: 0 0 0 3px rgba(238, 77, 45, 0.12) !important;
+}
+
+.requireTag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #ee4d2d;
+  white-space: nowrap;
+}
+
+.requiredMark {
+  color: #ee4d2d;
+  margin-left: 3px;
+}

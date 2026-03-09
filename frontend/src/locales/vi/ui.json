@@ -210,9 +210,19 @@
             "placeholder": {
               "first_name": "Nhập họ",
               "last_name": "Nhập tên",
+              "email": "Nhập email",
               "phone": "Nhập số điện thoại",
               "address": "Nhập địa chỉ",
               "age": "Nhập tuổi"
+            },
+            "required": {
+              "first_name": "Họ không được để trống",
+              "last_name": "Tên không được để trống",
+              "email": "Email không được để trống"
+            },
+            "validation": {
+              "email_invalid": "Email không hợp lệ",
+              "email_taken": "Email đã được sử dụng bởi tài khoản khác"
             }
           }
         }
