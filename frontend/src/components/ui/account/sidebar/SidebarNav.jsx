@@ -6,7 +6,7 @@ import {
   faClipboardList,
   faTicket,
 } from "@fortawesome/free-solid-svg-icons";
-import { TABS } from "../constants";
+import { TABS } from "../../../../constants.js";
 import styles from "./sidebar.module.scss";
 import classNames from "classnames/bind";
 

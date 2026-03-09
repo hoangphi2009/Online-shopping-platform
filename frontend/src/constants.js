@@ -17,8 +17,9 @@ export const SELECTABLE_ROLE_KEYS = { 0: "user", 1: "seller" };
 export const formatVal = (v) =>
   v !== undefined && v !== null && v !== "" ? v : "-";
 
-export const getFullName = (user) => {
-  if (user?.firstName && user?.lastName)
-    return `${user.firstName} ${user.lastName}`;
-  return user?.firstName || user?.lastName || "-";
-};
+export const getFullName = (user, lang = "en") =>
+  user?.firstName && user?.lastName
+    ? lang === "vi"
+      ? `${user.lastName} ${user.firstName}`
+      : `${user.firstName} ${user.lastName}`
+    : user?.firstName || user?.lastName || "-";

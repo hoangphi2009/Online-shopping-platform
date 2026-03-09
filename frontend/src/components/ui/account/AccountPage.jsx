@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import {
   faBell,
   faLocationDot,
@@ -12,7 +13,7 @@ import {
 import AccountSidebar from "./sidebar/AccountSidebar";
 import ProfilePage from "./profile/ProfilePage";
 import PlaceholderPage from "./placeholder/PlaceholderPage";
-import { TABS, getFullName } from "./constants";
+import { TABS, getFullName } from "../../../constants.js";
 import styles from "./accountPage.module.scss";
 import classNames from "classnames/bind";
 
@@ -32,11 +33,12 @@ const CONTENT_MAP = {
 
 const AccountPage = () => {
   const { user } = useSelector((state) => state.auth);
+  const { i18n } = useTranslation();
   const [activeTab, setActiveTab] = useState(TABS.PROFILE);
   const [accountMenuOpen, setAccountMenuOpen] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
 
-  const fullName = getFullName(user);
+  const fullName = getFullName(user, i18n.language);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);

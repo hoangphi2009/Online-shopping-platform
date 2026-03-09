@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import axios from "axios";
 import { setUser } from "../../../../redux/authSlice";
 import { BACKEND_URL_ENDPOINT } from "../../../../constants/constants";
-import { ROLE_KEYS, SELECTABLE_ROLE_KEYS } from "../constants";
+import { ROLE_KEYS, SELECTABLE_ROLE_KEYS } from "../../../../constants.js";
 import styles from "./profile.module.scss";
 import classNames from "classnames/bind";
 

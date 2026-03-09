@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { formatVal, ROLE_KEYS } from "../constants";
+import { formatVal, ROLE_KEYS } from "../../../../constants.js";
 import styles from "./profile.module.scss";
 import classNames from "classnames/bind";
 
