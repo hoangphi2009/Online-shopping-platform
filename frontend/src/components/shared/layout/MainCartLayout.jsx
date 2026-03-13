@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import CartHeader from "../../ui/cart/CartHeader";
 import CartFooter from "../../ui/cart/CartFooter";
 import CartList from "../../ui/cart/CartList";
@@ -7,17 +8,23 @@ import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
 const MainCartLayout = () => {
+  const hasProducts = useSelector((state) => state.cart.products.length > 0);
+
   return (
     <div>
-      <header className={cx("cart-header")}>
-        <CartHeader />
-      </header>
+      {hasProducts && (
+        <header className={cx("cart-header")}>
+          <CartHeader />
+        </header>
+      )}
       <main className={cx("main-cart-content")}>
         <CartList />
       </main>
-      <footer className={cx("cart-footer")}>
-        <CartFooter />
-      </footer>
+      {hasProducts && (
+        <footer className={cx("cart-footer")}>
+          <CartFooter />
+        </footer>
+      )}
     </div>
   );
 };
