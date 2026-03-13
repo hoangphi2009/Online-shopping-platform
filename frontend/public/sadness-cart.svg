@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Cart body -->
+  <rect x="40" y="90" width="120" height="75" rx="10" fill="#e8f5e9" stroke="#4caf50" stroke-width="3"/>
+  <!-- Cart handle -->
+  <path d="M20 50 L40 90" stroke="#4caf50" stroke-width="3" stroke-linecap="round"/>
+  <line x1="10" y1="50" x2="50" y2="50" stroke="#4caf50" stroke-width="3" stroke-linecap="round"/>
+  <!-- Cart wheels -->
+  <circle cx="70" cy="175" r="10" fill="#4caf50"/>
+  <circle cx="70" cy="175" r="5" fill="#fff"/>
+  <circle cx="130" cy="175" r="10" fill="#4caf50"/>
+  <circle cx="130" cy="175" r="5" fill="#fff"/>
+  <!-- Sad face -->
+  <circle cx="100" cy="125" r="25" fill="#fff" stroke="#4caf50" stroke-width="2"/>
+  <!-- Eyes (X shape = sad/crying) -->
+  <line x1="89" y1="116" x2="94" y2="121" stroke="#555" stroke-width="2" stroke-linecap="round"/>
+  <line x1="94" y1="116" x2="89" y2="121" stroke="#555" stroke-width="2" stroke-linecap="round"/>
+  <line x1="106" y1="116" x2="111" y2="121" stroke="#555" stroke-width="2" stroke-linecap="round"/>
+  <line x1="111" y1="116" x2="106" y2="121" stroke="#555" stroke-width="2" stroke-linecap="round"/>
+  <!-- Sad mouth -->
+  <path d="M90 136 Q100 128 110 136" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Tear drop -->
+  <ellipse cx="94" cy="124" rx="2" ry="3" fill="#90caf9"/>
+</svg>
