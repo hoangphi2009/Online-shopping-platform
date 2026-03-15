@@ -32,12 +32,8 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const path = (role) => {
-    if (role === "admin") {
-      return "/admin/dashboard";
-    }
-    if (role === "seller") {
-      return "/seller/dashboard";
-    }
+    if (role === 2) return "/admin/dashboard";
+    if (role === 1) return "/seller/dashboard";
     return "/";
   };
 

@@ -1,0 +1,75 @@
+# CodeRabbit Configuration
+# https://docs.coderabbit.ai/guides/configure-coderabbit
+
+language: "en-US"
+
+reviews:
+  # Enable review status messages
+  review_status: true
+
+  # Enable auto-reviews on all pull requests, including feature branches
+  auto_review:
+    enabled: true
+    # Do not ignore drafts
+    drafts: false
+    # Allow reviews on all base branches (not just the default branch)
+    base_branches:
+      - ".*"
+
+  # Provide high-quality review details
+  profile: "chill"
+
+  # Request changes workflow
+  request_changes_workflow: false
+
+  # Enable inline code suggestions
+  high_level_summary: true
+  poem: false
+  collapse_walkthrough: false
+
+  path_filters:
+    - "!**/node_modules/**"
+    - "!**/dist/**"
+    - "!**/build/**"
+    - "!**/.idea/**"
+    - "!**/uploads/**"
+
+  path_instructions:
+    - path: "backend/**"
+      instructions: |
+        Review Node.js/Express backend code.
+        Check for security vulnerabilities (SQL injection, XSS, authentication issues).
+        Verify proper error handling and input validation.
+        Ensure middleware usage is correct (verifyToken, verifyRole).
+        Check for proper use of async/await and error propagation.
+
+    - path: "frontend/**"
+      instructions: |
+        Review React frontend code.
+        Check for proper use of Redux state management.
+        Verify component structure and reusability.
+        Ensure proper handling of async operations and loading states.
+        Check for accessibility and performance best practices.
+
+    - path: "backend/src/models/**"
+      instructions: |
+        Review Mongoose models.
+        Check schema definitions, validations, and indexes.
+        Ensure proper use of references and population.
+
+    - path: "backend/src/controllers/**"
+      instructions: |
+        Review controller logic.
+        Ensure separation of concerns (controllers should delegate to services).
+        Check for proper HTTP status codes and response formats.
+
+    - path: "backend/src/routes/**"
+      instructions: |
+        Review route definitions.
+        Verify proper middleware is applied (auth, role checks).
+        Check RESTful conventions.
+
+chat:
+  auto_reply: true
+
+

@@ -16,10 +16,7 @@ const loginUserController = async (req, res) => {
     return res.status(200).json({
       message: "Login successfully!",
       success: true,
-      user: {
-        ...user,
-        role: result.role,
-      },
+      user,
       accessToken: accessToken,
       refreshToken: refreshToken,
       refreshTokenExpires: ms(refreshTokenExpires, { long: true }),

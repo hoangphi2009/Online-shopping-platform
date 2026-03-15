@@ -1,0 +1,43 @@
+.placeholderContent {
+  padding: 40px 52px 52px;
+}
+
+.placeholderHeader {
+  margin-bottom: 28px;
+}
+
+.placeholderTitle {
+  font-size: 24px; // Increased title size
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.divider {
+  height: 1px;
+  background: #f0f0f0;
+  margin-top: 18px;
+}
+
+.placeholderBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 120px 0; // Increased vertical padding for more breathing room
+  color: #ccc;
+}
+
+.placeholderIcon {
+  font-size: 96px; // Increased icon size
+  color: #e0e0e0;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.06));
+}
+
+.placeholderText {
+  font-size: 17px;
+  color: #bbb;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}

@@ -1,0 +1,177 @@
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: sticky;
+  top: 20px;
+}
+
+/* ─── User Info ───────────────────────────────────────────────────────── */
+
+.sidebarUser {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 22px 24px;
+  border-bottom: 1px solid #f0f0f0;
+  background: linear-gradient(135deg, #fff5f3 0%, #fff 100%);
+}
+
+.sidebarAvatar {
+  flex-shrink: 0;
+}
+
+.avatarImg {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ee4d2d;
+  box-shadow: 0 2px 6px rgba(238, 77, 45, 0.25);
+}
+
+.avatarPlaceholder {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fce8e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ee4d2d;
+  font-size: 22px;
+  border: 2px solid #ee4d2d;
+  box-shadow: 0 2px 6px rgba(238, 77, 45, 0.2);
+}
+
+.sidebarUserInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.sidebarUsername {
+  font-size: 15px;
+  font-weight: 700;
+  color: #222;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebarEditLink {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  color: #757575;
+  padding: 0;
+  transition: color 0.15s;
+
+  &:hover {
+    color: #ee4d2d;
+  }
+
+  svg {
+    font-size: 10px;
+  }
+}
+
+/* ─── Navigation ──────────────────────────────────────────────────────── */
+
+.sidebarNav {
+  padding: 12px 0 20px;
+}
+
+.navItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+
+  &:hover {
+    background: #fff5f3;
+    color: #ee4d2d;
+    border-left-color: #f5c4ba;
+  }
+
+  &.active {
+    color: #ee4d2d;
+    font-weight: 600;
+    background: #fff0ed;
+    border-left-color: #ee4d2d;
+  }
+}
+
+.navParent {
+  font-weight: 500;
+}
+
+.navIcon {
+  width: 18px;
+  flex-shrink: 0;
+  color: #ee4d2d;
+  font-size: 15px;
+}
+
+.navSubMenu {
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
+}
+
+.subNavItem {
+  width: 100%;
+  padding: 12px 22px 12px 52px;
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  font-size: 13.5px;
+  color: #555;
+  text-align: left;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+
+  &:hover {
+    background: #fff5f3;
+    color: #ee4d2d;
+  }
+
+  &.active {
+    color: #ee4d2d;
+    font-weight: 600;
+    background: #fff0ed;
+    border-left-color: #ee4d2d;
+  }
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────── */
+
+@media (max-width: 992px) {
+  .sidebar {
+    width: 230px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: static;
+  }
+}
