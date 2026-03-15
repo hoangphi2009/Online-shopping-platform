@@ -5,8 +5,7 @@ import { faTicket } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  updateProductSelected,
-  calculateTotalAmount,
+  setAllProductsSelected,
   removeSelectedProducts,
   removeUnavailableProducts,
 } from "../../../redux/cartSlice";
@@ -33,20 +32,20 @@ const CartFooter = () => {
       title: t("components.shared.confirm.title"),
       deleteSelected: t("components.shared.confirm.delete_selected_items"),
       removeUnavailable: t(
-        "components.shared.confirm.remove_unavailable_items"
+        "components.shared.confirm.remove_unavailable_items",
       ),
     },
     toast: {
       deleteSuccess: t("components.ui.cart.footer.delete_success"),
       deleteFailed: t("components.ui.cart.footer.delete_failed"),
       removeUnavailableSuccess: t(
-        "components.ui.cart.footer.remove_unavailable_success"
+        "components.ui.cart.footer.remove_unavailable_success",
       ),
       noUnavailableProducts: t(
-        "components.ui.cart.footer.no_unavailable_products"
+        "components.ui.cart.footer.no_unavailable_products",
       ),
       removeUnavailableFailed: t(
-        "components.ui.cart.footer.remove_unavailable_failed"
+        "components.ui.cart.footer.remove_unavailable_failed",
       ),
     },
   };
@@ -98,16 +97,17 @@ const CartFooter = () => {
         {
           headers: { Authorization: `Bearer ${accessToken}` },
           withCredentials: true,
-        }
+        },
       );
       if (res.data.success) {
         dispatch(config.reduxAction());
-        dispatch(calculateTotalAmount());
         toast.success(config.successToast);
       }
     } catch (error) {
       console.error(error);
-      toast.error(error.status < 500 ? config?.unAvailableToast : config.failedToast);
+      toast.error(
+        error.status < 500 ? config?.unAvailableToast : config.failedToast,
+      );
     } finally {
       setConfirmDialog({
         isOpen: false,
@@ -120,28 +120,21 @@ const CartFooter = () => {
 
   const handleSelectAll = async () => {
     const newSelectedState = !allSelected;
+    const previousSelectedState = allSelected;
+
+    dispatch(setAllProductsSelected(newSelectedState));
+
     try {
-      const res = await axios.patch(
+      await axios.patch(
         `${BACKEND_URL_ENDPOINT}/cart/products`,
         { selected: newSelectedState },
         {
           headers: { Authorization: `Bearer ${accessToken}` },
           withCredentials: true,
-        }
+        },
       );
-
-      if (res.data.success) {
-        cartProducts.forEach((product) => {
-          dispatch(
-            updateProductSelected({
-              productId: product.productId._id,
-              selected: newSelectedState,
-            })
-          );
-        });
-        dispatch(calculateTotalAmount());
-      }
     } catch (error) {
+      dispatch(setAllProductsSelected(previousSelectedState));
       console.error(error);
     }
   };
