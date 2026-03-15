@@ -1,5 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const recalculateTotalAmount = (products) => {
+  return products.reduce((total, product) => {
+    if (!product.selected) {
+      return total;
+    }
+    const price = product.productId.offerPrice || product.productId.price;
+    return total + price * product.quantity;
+  }, 0);
+};
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -13,6 +23,7 @@ const cartSlice = createSlice({
     },
     setProducts: (state, action) => {
       state.products = action.payload;
+      state.totalAmount = recalculateTotalAmount(state.products);
     },
     setTotalAmount: (state, action) => {
       state.totalAmount = action.payload;
@@ -22,42 +33,48 @@ const cartSlice = createSlice({
       const product = state.products.find((p) => p.productId._id === productId);
       if (product) {
         product.selected = selected;
+        state.totalAmount = recalculateTotalAmount(state.products);
       }
     },
+    setAllProductsSelected: (state, action) => {
+      const selected = action.payload;
+      state.products.forEach((product) => {
+        product.selected = selected;
+      });
+      state.totalAmount = recalculateTotalAmount(state.products);
+    },
     calculateTotalAmount: (state) => {
-      state.totalAmount = state.products.reduce((total, product) => {
-        if (product.selected) {
-          const price = product.productId.offerPrice || product.productId.price;
-          return total + price * product.quantity;
-        }
-        return total;
-      }, 0);
+      state.totalAmount = recalculateTotalAmount(state.products);
     },
     updateProductQuantity: (state, action) => {
       const { productId, quantity } = action.payload;
       const product = state.products.find((p) => p.productId._id === productId);
       if (product) {
         product.quantity = quantity;
+        state.totalAmount = recalculateTotalAmount(state.products);
       }
     },
     removeProduct: (state, action) => {
       const productId = action.payload;
       state.products = state.products.filter(
-        (p) => p.productId._id !== productId
+        (p) => p.productId._id !== productId,
       );
+      state.totalAmount = recalculateTotalAmount(state.products);
     },
     removeSelectedProducts: (state) => {
       state.products = state.products.filter((p) => !p.selected);
+      state.totalAmount = recalculateTotalAmount(state.products);
     },
     removeUnavailableProducts: (state) => {
       state.products = state.products.filter(
-        (p) => p.productId && p.productId.stock > 0
+        (p) => p.productId && p.productId.stock > 0,
       );
+      state.totalAmount = recalculateTotalAmount(state.products);
     },
     addProduct: (state, action) => {
       const newProduct = action.payload;
       const existingProduct = state.products.find(
-        (p) => p.productId._id === newProduct.productId._id
+        (p) => p.productId._id === newProduct.productId._id,
       );
       if (existingProduct) {
         existingProduct.quantity += newProduct.quantity;
@@ -65,6 +82,7 @@ const cartSlice = createSlice({
       } else {
         state.products.push(newProduct);
       }
+      state.totalAmount = recalculateTotalAmount(state.products);
     },
   },
 });
@@ -74,6 +92,7 @@ export const {
   setProducts,
   setTotalAmount,
   updateProductSelected,
+  setAllProductsSelected,
   calculateTotalAmount,
   updateProductQuantity,
   removeProduct,

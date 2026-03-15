@@ -1,9 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  updateProductSelected,
-  calculateTotalAmount,
-} from "../../../redux/cartSlice";
+import { setAllProductsSelected } from "../../../redux/cartSlice";
 import { BACKEND_URL_ENDPOINT } from "../../../constants/constants";
 import axios from "axios";
 import styles from "./cartHeader.module.scss";
@@ -21,8 +18,12 @@ const CartHeader = () => {
 
   const handleSelectAll = async () => {
     const newSelectedState = !allSelected;
+    const previousSelectedState = allSelected;
+
+    dispatch(setAllProductsSelected(newSelectedState));
+
     try {
-      const res = await axios.patch(
+      await axios.patch(
         `${BACKEND_URL_ENDPOINT}/cart/products`,
         { selected: newSelectedState },
         {
@@ -30,20 +31,10 @@ const CartHeader = () => {
             Authorization: `Bearer ${accessToken}`,
           },
           withCredentials: true,
-        }
+        },
       );
-      if (res.data.success) {
-        products.forEach((product) => {
-          dispatch(
-            updateProductSelected({
-              productId: product.productId._id,
-              selected: newSelectedState,
-            })
-          );
-        });
-        dispatch(calculateTotalAmount());
-      }
     } catch (error) {
+      dispatch(setAllProductsSelected(previousSelectedState));
       console.error("Lỗi cập nhật select all:", error);
     }
   };

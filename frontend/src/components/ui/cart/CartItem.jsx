@@ -2,12 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTicket, faTruck } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BACKEND_URL_ENDPOINT } from "../../../constants/constants";
 import {
   updateProductSelected,
-  calculateTotalAmount,
   updateProductQuantity,
   removeProduct,
 } from "../../../redux/cartSlice";
@@ -26,9 +25,21 @@ const CartItem = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const accessToken = useSelector((state) => state.auth.accessToken);
-  const [quantity, setQuantity] = useState(product.quantity);
   const [showConfirm, setShowConfirm] = useState(false);
+  const selectedMutationRef = useRef(0);
+  const quantityMutationRef = useRef(0);
+  const quantityDebounceRef = useRef(null);
+  const lastConfirmedQuantityRef = useRef(product.quantity);
   const API_URL = `${BACKEND_URL_ENDPOINT}/cart/products/${product.productId._id}`;
+
+  useEffect(() => {
+    return () => {
+      if (quantityDebounceRef.current) {
+        clearTimeout(quantityDebounceRef.current);
+      }
+    };
+  }, []);
+
   const formatPrice = (price) => {
     if (!price || isNaN(price)) return "0đ";
     return price.toLocaleString("vi-VN") + "đ";
@@ -36,7 +47,7 @@ const CartItem = ({ product }) => {
 
   const calculateTotal = () => {
     const finalPrice = product.productId.offerPrice || product.productId.price;
-    return formatPrice(finalPrice * quantity);
+    return formatPrice(finalPrice * product.quantity);
   };
 
   const handleDelete = async () => {
@@ -51,7 +62,6 @@ const CartItem = ({ product }) => {
       if (res.data.success) {
         toast.success(t("components.ui.cart.item.delete_success"));
         dispatch(removeProduct(product.productId._id));
-        dispatch(calculateTotalAmount());
         setShowConfirm(false);
       }
     } catch (error) {
@@ -64,8 +74,18 @@ const CartItem = ({ product }) => {
   const handleCheckboxChange = async (e) => {
     const isChecked = e.target.checked;
     const productId = product.productId._id;
+    const previousSelected = product.selected;
+    const mutationId = ++selectedMutationRef.current;
+
+    dispatch(
+      updateProductSelected({
+        productId,
+        selected: isChecked,
+      }),
+    );
+
     try {
-      const res = await axios.patch(
+      await axios.patch(
         `${API_URL}`,
         { selected: isChecked },
         {
@@ -73,48 +93,67 @@ const CartItem = ({ product }) => {
             Authorization: `Bearer ${accessToken}`,
           },
           withCredentials: true,
-        }
+        },
       );
-      if (res.data.success) {
-        dispatch(
-          updateProductSelected({
-            productId: productId,
-            selected: isChecked,
-          })
-        );
-        dispatch(calculateTotalAmount());
-      }
     } catch (error) {
       console.error(error);
+      if (mutationId === selectedMutationRef.current) {
+        dispatch(
+          updateProductSelected({
+            productId,
+            selected: previousSelected,
+          }),
+        );
+      }
     }
   };
 
-  const handleQuantityChange = async (newQuantity) => {
-    try {
-      const res = await axios.patch(
-        `${API_URL}`,
-        { quantity: newQuantity },
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-          withCredentials: true,
-        }
-      );
-      if (res.data.success) {
-        setQuantity(newQuantity);
-        dispatch(
-          updateProductQuantity({
-            productId: product.productId._id,
-            quantity: newQuantity,
-          })
-        );
-        dispatch(calculateTotalAmount());
-      }
-    } catch (error) {
-      console.error(error);
-      setQuantity(product.quantity);
+  const handleQuantityChange = (newQuantity) => {
+    if (newQuantity === product.quantity) {
+      return;
     }
+
+    const mutationId = ++quantityMutationRef.current;
+
+    dispatch(
+      updateProductQuantity({
+        productId: product.productId._id,
+        quantity: newQuantity,
+      }),
+    );
+
+    if (quantityDebounceRef.current) {
+      clearTimeout(quantityDebounceRef.current);
+    }
+
+    quantityDebounceRef.current = setTimeout(async () => {
+      try {
+        await axios.patch(
+          `${API_URL}`,
+          { quantity: newQuantity },
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+            withCredentials: true,
+          },
+        );
+
+        if (mutationId === quantityMutationRef.current) {
+          lastConfirmedQuantityRef.current = newQuantity;
+        }
+      } catch (error) {
+        console.error(error);
+        if (mutationId === quantityMutationRef.current) {
+          dispatch(
+            updateProductQuantity({
+              productId: product.productId._id,
+              quantity: lastConfirmedQuantityRef.current,
+            }),
+          );
+        }
+      }
+    }, 180);
   };
 
   const handleProductClick = () => {
@@ -141,9 +180,7 @@ const CartItem = ({ product }) => {
           </span>
         </div>
         <div className={cx("productSection")}>
-          <div
-            className={cx("productInfo")}
-          >
+          <div className={cx("productInfo")}>
             <Checkbox
               checked={product.selected}
               onChange={handleCheckboxChange}
@@ -184,7 +221,7 @@ const CartItem = ({ product }) => {
             </div>
             <div className={cx("productQuantity")}>
               <QuantityControl
-                value={quantity}
+                value={product.quantity}
                 onChange={handleQuantityChange}
                 min={1}
                 max={product.productId.stock}
