@@ -13,4 +13,9 @@
     &:hover {
         background-color: #28a085;
     }
+    &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
 }
