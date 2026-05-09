@@ -147,6 +147,7 @@ const ProductDetail = () => {
         <ProductActions
           onAddToCart={() => setShowConfirm(true)}
           onBuyNow={() => handleBuyNow(productId)}
+          isOutOfStock={product?.stock === 0}
         />
       </div>
       <ConfirmForm
