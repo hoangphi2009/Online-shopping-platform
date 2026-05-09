@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
@@ -15,6 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { BACKEND_URL_ENDPOINT } from "../../../constants/constants";
 import { removeSelectedProducts, calculateTotalAmount } from "../../../redux/cartSlice";
+import axios from "axios";
 import styles from "./checkout.module.scss";
 import classNames from "classnames/bind";
 
