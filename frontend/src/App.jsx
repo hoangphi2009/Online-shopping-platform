@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
+import { toastOptions } from "./config/toasterConfig.js";
 import HomePage from "./components/home/HomePage.jsx";
 import AuthLayout from "./components/auth/layout/AuthLayout.jsx";
 import MainLayout from "./components/shared/layout/MainLayout.jsx";
@@ -15,7 +16,12 @@ import AccountPage from "./components/ui/account/AccountPage.jsx";
 function App() {
   return (
     <>
-      <Toaster position="top-right" richColors closeButton />
+      <Toaster
+        position="bottom-right"
+        richColors
+        closeButton
+        toastOptions={toastOptions}
+      />
       <BrowserRouter>
         <ScrollTop />
         <Routes>
