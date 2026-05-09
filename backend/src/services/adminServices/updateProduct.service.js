@@ -52,6 +52,10 @@ const updateProductService = async (productId, updateData, updateFiles) => {
         }
 
         await product.save();
+
+        await product.populate("category", "name");
+        await product.populate("brandId", "brandName");
+
         return product;
     }
     catch (error) {
