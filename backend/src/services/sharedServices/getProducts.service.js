@@ -19,6 +19,8 @@ const getProductsService = async (page = 1, limit = 4) => {
     };
   }
   const products = await Product.find()
+    .populate("category", "name")
+    .populate("brandId", "brandName")
     .sort({ createdAt: -1 })
     .skip(skip)
     .limit(limit);

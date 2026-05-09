@@ -197,7 +197,7 @@ const CartItem = ({ product }) => {
                   {t("components.ui.cart.item.category_label")}
                 </span>
                 <span className={cx("variantValue")}>
-                  {product.productId.category}
+                  {product.productId.category?.name}
                 </span>
               </div>
             </div>
