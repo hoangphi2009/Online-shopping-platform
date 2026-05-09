@@ -1,4 +1,5 @@
 import Product from "../../models/product.model.js";
+import Category from "../../models/category.model.js";
 import { uploadToCloudinary } from "../../utils/cloudinary.js";
 
 const updateProductService = async (productId, updateData, updateFiles) => {
@@ -12,6 +13,13 @@ const updateProductService = async (productId, updateData, updateFiles) => {
             const existingProduct = await Product.findOne({ name: updateData.name.trim() });
             if (existingProduct) {
                 return `Sản phẩm với tên ${updateData.name} đã tồn tại`;
+            }
+        }
+
+        if (updateData.category) {
+            const categoryExists = await Category.findById(updateData.category);
+            if (!categoryExists) {
+                return 'Danh mục không tồn tại';
             }
         }
 

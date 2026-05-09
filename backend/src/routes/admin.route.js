@@ -18,6 +18,10 @@ import getAllBrandsController from "../controllers/adminControllers/getAllBrands
 import getBrandByIdController from "../controllers/adminControllers/getBrandById.controller.js";
 import getProductsByAdminController from "../controllers/adminControllers/getProductsByAdmin.controller.js";
 import getMyProductsController from "../controllers/adminControllers/getMyProducts.controller.js";
+import createCategoryController from "../controllers/adminControllers/createCategory.controller.js";
+import getAllCategoriesController from "../controllers/adminControllers/getAllCategories.controller.js";
+import updateCategoryController from "../controllers/adminControllers/updateCategory.controller.js";
+import deleteCategoryController from "../controllers/adminControllers/deleteCategory.controller.js";
 
 const router = express.Router();
 
@@ -33,6 +37,11 @@ router.patch("/order/:orderId/status", updateOrderStatusController);
 router.post("/brand", createBrandController);
 router.get("/brands", getAllBrandsController);
 router.get("/brand/:brandId", getBrandByIdController);
+
+router.post("/category", createCategoryController);
+router.get("/categories", getAllCategoriesController);
+router.patch("/category/:categoryId", updateCategoryController);
+router.delete("/category/:categoryId", deleteCategoryController);
 
 router.get('/products', getAllProductsController);
 router.get('/myProducts', getMyProductsController);

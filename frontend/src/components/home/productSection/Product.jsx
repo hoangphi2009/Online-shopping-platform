@@ -31,7 +31,7 @@ const Product = ({ product, index }) => {
 
       <div className={cx("product-info")}>
         <div className={cx("category-badge-wrapper")}>
-          <div className={cx("category")}>{product.category}</div>
+          <div className={cx("category")}>{product.category?.name}</div>
           {product.bestseller && (
             <div className={cx("product-badge")}>
               <HotBadge text={t("components.home.products.hot")} />
