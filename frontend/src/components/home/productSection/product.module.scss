@@ -202,13 +202,21 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    
-    &:hover {
+
+    &:hover:not(:disabled) {
         background: #00B207;
         color: white;
         border-color: #00B207;
     }
-    
+
+    &:disabled {
+        background: #f0f0f0;
+        border-color: #d0d0d0;
+        color: #999;
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
     svg {
         font-size: 16px;
     }
