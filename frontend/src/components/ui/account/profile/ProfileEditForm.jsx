@@ -7,7 +7,6 @@ import { toast } from "sonner";
 import axios from "axios";
 import { setUser } from "../../../../redux/authSlice";
 import { BACKEND_URL_ENDPOINT } from "../../../../constants/constants";
-import { SELECTABLE_ROLE_KEYS } from "../../../../constants.js";
 import { validateProfileForm, EMAIL_REGEX } from "../../../../CustomValidates.js";
 import RequireTag from "../../../../utils/RequireTag.jsx";
 import styles from "./profile.module.scss";
@@ -28,7 +27,6 @@ const ProfileEditForm = ({ user, fullName, onDone }) => {
     phoneNumber: user?.phoneNumber ?? "",
     address: user?.address,
     age: user?.age ?? "",
-    role: user?.role ?? 0,
   });
   const [errors, setErrors] = useState({});
   const [avatarFile, setAvatarFile] = useState(null);
@@ -43,7 +41,7 @@ const ProfileEditForm = ({ user, fullName, onDone }) => {
     const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,
-      [name]: name === "role" ? Number(value) : value,
+      [name]: value,
     }));
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
@@ -80,7 +78,6 @@ const ProfileEditForm = ({ user, fullName, onDone }) => {
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
-            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -201,21 +198,6 @@ const ProfileEditForm = ({ user, fullName, onDone }) => {
           />
         </div>
 
-        <div className={cx("fieldRow")}>
-          <label className={cx("fieldLabel")}>{t(`${P}.fields.role`)}</label>
-          <select
-            className={cx("fieldInput", "roleSelect", `role-${form.role}`)}
-            name="role"
-            value={form.role}
-            onChange={handleChange}
-          >
-            {Object.entries(SELECTABLE_ROLE_KEYS).map(([num, key]) => (
-              <option key={num} value={Number(num)}>
-                {t(`${P}.roles.${key}`)}
-              </option>
-            ))}
-          </select>
-        </div>
 
         {/* Action buttons */}
         <div className={cx("editActions")}>
