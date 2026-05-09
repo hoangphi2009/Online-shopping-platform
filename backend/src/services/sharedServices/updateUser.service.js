@@ -10,7 +10,7 @@ const updateUserService = async (userId, updateData, updateFile) => {
     const user = await User.findById(userId);
     if (!user) return "User không tồn tại";
 
-    const allowedFields = ["firstName", "lastName", "email", "password", "role", "age", "address",
+    const allowedFields = ["firstName", "lastName", "email", "password", "age", "address",
       "phoneNumber",
     ];
 

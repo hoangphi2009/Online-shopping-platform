@@ -6,12 +6,6 @@ const updateUserController = async (req, res) => {
     const updateData = req.body;
     const updateFile = req.file;
 
-    if (updateData?.role && !["user", "admin"].includes(updateData.role)) {
-      return res.status(400).json({
-        message: "Role không hợp lệ",
-        success: false,
-      });
-    }
 
     const result = await updateUserService(userId, updateData, updateFile);
 

@@ -67,6 +67,18 @@
               color: #999;
             }
           }
+
+          .inputError {
+            border-color: #ee4d2d !important;
+            box-shadow: 0 0 0 3px rgba(238, 77, 45, 0.1);
+          }
+
+          .fieldErrorMsg {
+            display: block;
+            margin-top: 5px;
+            font-size: 12px;
+            color: #ee4d2d;
+          }
         }
 
         .submit-btn {

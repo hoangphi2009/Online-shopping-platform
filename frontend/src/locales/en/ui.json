@@ -163,6 +163,69 @@
           "remove_unavailable_failed": "Failed to remove unavailable items",
           "no_unavailable_products": "No unavailable items in the cart"
         }
+      },
+      "account": {
+        "sidebar": {
+          "edit_profile": "Edit Profile",
+          "notifications": "Notifications",
+          "my_account": "My Account",
+          "profile": "Profile",
+          "address": "Address",
+          "change_password": "Change Password",
+          "notification_settings": "Notification Settings",
+          "personal_info": "Personal Information",
+          "orders": "My Orders",
+          "vouchers": "My Vouchers"
+        },
+        "profile": {
+          "title": "My Profile",
+          "subtitle": "Manage your profile information to secure your account",
+          "fields": {
+            "first_name": "First Name",
+            "last_name": "Last Name",
+            "full_name": "Full Name",
+            "email": "Email",
+            "phone": "Phone Number",
+            "address": "Address",
+            "age": "Age",
+            "role": "Role"
+          },
+          "roles": {
+            "user": "User",
+            "seller": "Seller",
+            "admin": "Admin"
+          },
+          "avatar": {
+            "choose": "Choose Photo",
+            "max_size": "Maximum file size 1 MB",
+            "format": "Format: JPEG, .PNG"
+          },
+          "edit": {
+            "save": "Save",
+            "cancel": "Cancel",
+            "saving": "Saving...",
+            "success": "Profile updated successfully",
+            "error": "Failed to update profile",
+            "not_editable": "Cannot be changed",
+            "placeholder": {
+              "first_name": "Enter first name",
+              "last_name": "Enter last name",
+              "email": "Enter email",
+              "phone": "Enter phone number",
+              "address": "Enter address",
+              "age": "Enter age"
+            },
+            "required": {
+              "first_name": "First name is required",
+              "last_name": "Last name is required",
+              "email": "Email is required"
+            },
+            "validation": {
+              "email_invalid": "Invalid email address",
+              "email_taken": "Email is already used by another account"
+            }
+          }
+        }
       }
     }
   }

@@ -24,7 +24,7 @@ router.get("/products", getProductsController);
 router.patch("/user/changePassword", verifyToken, verifyUserOrAdmin, changePasswordController);
 
 router.post("/product/:productId/review", verifyToken, createReviewController);
-router.patch("/user/:userId", verifyToken, verifyUserOrAdmin, upload.single("avatar"), updateUserController);
+router.patch("/user/:userId", verifyToken, upload.single("avatar"), updateUserController);
 router.get("/user/:userId", verifyToken, getUserByIdController);
 router.get("/product/:productId", getProductByIdController);
 

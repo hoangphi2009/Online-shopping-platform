@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 import { BACKEND_URL_ENDPOINT } from "../../../constants/constants.js";
+import { validateEmail } from "../../../CustomValidates.js";
 import axios from "axios";
 import AuthIntro from "../shared/AuthIntro";
 import styles from "./register.module.scss";
@@ -23,16 +24,24 @@ const Register = () => {
     password: "",
     confirmPassword: "",
   });
+  const [emailError, setEmailError] = useState(null);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (e.target.name === "email" && emailError) setEmailError(null);
+  };
+
+  const handleEmailBlur = () => {
+    setEmailError(validateEmail(formData.email, t));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const err = validateEmail(formData.email, t);
+    if (err) {
+      setEmailError(err);
+      return;
+    }
     try {
       const response = await axios.post(`${BACKEND_URL_ENDPOINT}/register`, formData, {
         withCredentials: true,
@@ -104,8 +113,10 @@ const Register = () => {
                 placeholder={t("components.auth.register.email_placeholder")}
                 value={formData.email}
                 onChange={handleChange}
-                required
+                onBlur={handleEmailBlur}
+                className={emailError ? cx("inputError") : ""}
               />
+              {emailError && <span className={cx("fieldErrorMsg")}>{emailError}</span>}
             </div>
 
             <div className={cx("form-group")}>
