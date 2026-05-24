@@ -29,7 +29,7 @@ const ShopProductGrid = ({ page, onPageChange, categoryId, sort }) => {
 
       <div className={cx("grid", { fetching: isFetching && !isLoading })}>
         {isLoading
-          ? Array.from({ length: 12 }).map((_, i) => <ProductSkeleton key={i} />)
+          ? Array.from({ length: 6 }).map((_, i) => <ProductSkeleton key={i} />)
           : products.length > 0
           ? products.map((product, index) => (
               <Product
