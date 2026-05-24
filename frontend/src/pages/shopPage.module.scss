@@ -1,0 +1,24 @@
+.shop-page {
+  min-height: 100vh;
+  background-color: #f1f5f9;
+  background-image:
+    radial-gradient(ellipse 70% 50% at 15% 0%, rgba(0, 178, 7, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 85% 5%, rgba(59, 130, 246, 0.06) 0%, transparent 55%);
+}
+
+.shop-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .shop-container {
+    flex-direction: column;
+    padding: 24px 16px 60px;
+    gap: 24px;
+  }
+}

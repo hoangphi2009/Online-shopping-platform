@@ -38,12 +38,10 @@ const ProductDetail = () => {
           `${BACKEND_URL_ENDPOINT}/product/${productId}`,
           { withCredentials: true }
         );
-        console.log("Product details response:", res.data);
         if (res.data.success) {
           setProduct(res.data.product);
         }
       } catch (error) {
-        console.error("Error fetching product details:", error);
         setError("Failed to load product details");
       } finally {
         setLoading(false);
@@ -88,7 +86,6 @@ const ProductDetail = () => {
         navigate("/cart");
       }
     } catch (error) {
-      console.error(error?.response?.data?.message);
       toast.error(t("components.ui.product.add_to_cart_error"));
     }
   };

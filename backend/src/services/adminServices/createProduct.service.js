@@ -1,5 +1,7 @@
 import Product from "../../models/product.model.js";
+import Category from "../../models/category.model.js";
 import { uploadToCloudinary } from "../../utils/cloudinary.js";
+import { AppError } from "../../utils/error.js";
 import {
   validateProductData,
   validateBrandExists,
@@ -27,6 +29,11 @@ const createProductService = async (productData, files, adminId) => {
 
   await validateProductNameUnique(name);
 
+  const categoryExists = await Category.findById(category);
+  if (!categoryExists) {
+    throw new AppError("Danh mục không tồn tại", 400);
+  }
+
   const imageUrls = await Promise.all(
     files.map((file) => uploadToCloudinary(file.path))
   );
@@ -36,7 +43,7 @@ const createProductService = async (productData, files, adminId) => {
     brandId,
     name: name.trim(),
     price: Number(price),
-    category,
+    category: Number(category),
     image: imageUrls,
     // Optional fields - only include if provided
     ...(description && { description }),
@@ -51,6 +58,7 @@ const createProductService = async (productData, files, adminId) => {
   await newProduct.save();
 
   await newProduct.populate("brandId", "brandName brandAdress");
+  await newProduct.populate("category", "name");
   await newProduct.populate("createdBy", "firstName lastName email");
 
   return newProduct;

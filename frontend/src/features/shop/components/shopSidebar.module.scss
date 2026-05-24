@@ -1,0 +1,123 @@
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.section-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin: 0 0 14px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.category-list,
+.sort-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.category-item,
+.sort-item {
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    flex-shrink: 0;
+    transition: background 0.15s ease;
+  }
+
+  &:hover {
+    background: #f1f5f9;
+    color: #1e293b;
+
+    &::before {
+      background: #94a3b8;
+    }
+  }
+
+  &.active {
+    background: #f0fdf4;
+    color: #16a34a;
+    font-weight: 600;
+
+    &::before {
+      background: #16a34a;
+    }
+  }
+
+  &.skeleton {
+    height: 38px;
+    background: #f1f5f9;
+    border-radius: 8px;
+    animation: shimmer 1.4s infinite;
+    cursor: default;
+    color: transparent;
+
+    &::before { display: none; }
+    &:hover { background: #f1f5f9; }
+  }
+}
+
+@keyframes shimmer {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .section {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .category-list,
+  .sort-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .category-item,
+  .sort-item {
+    white-space: nowrap;
+  }
+}

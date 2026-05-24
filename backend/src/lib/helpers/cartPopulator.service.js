@@ -7,10 +7,16 @@ const populateCart = async (cartId) => {
         .populate({
             path: 'products.productId',
             select: 'name price offerPrice image stock category brandId',
-            populate: {
-                path: 'brandId',
-                select: 'brandName',
-            }
+            populate: [
+                {
+                    path: 'brandId',
+                    select: 'brandName',
+                },
+                {
+                    path: 'category',
+                    select: 'name',
+                }
+            ]
         });
 };
 
