@@ -39,6 +39,29 @@
         "login_message": "Please log in"
       }
     },
+    "shop": {
+      "page": {
+        "title": "Shop",
+        "subtitle": "Explore thousands of high-quality products"
+      },
+      "sidebar": {
+        "categories_title": "Categories",
+        "sort_title": "Sort By",
+        "all_products": "All Products"
+      },
+      "sort": {
+        "newest": "Newest",
+        "price_asc": "Price: Low to High",
+        "price_desc": "Price: High to Low",
+        "rating": "Highest Rated",
+        "bestseller": "Best Sellers"
+      },
+      "grid": {
+        "result_count": "{{count}} products",
+        "loading": "Loading...",
+        "empty": "No products found."
+      }
+    },
     "home": {
       "products": {
         "title": "Our Best Selling Products",

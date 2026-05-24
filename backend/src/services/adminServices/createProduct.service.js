@@ -43,7 +43,7 @@ const createProductService = async (productData, files, adminId) => {
     brandId,
     name: name.trim(),
     price: Number(price),
-    category,
+    category: Number(category),
     image: imageUrls,
     // Optional fields - only include if provided
     ...(description && { description }),

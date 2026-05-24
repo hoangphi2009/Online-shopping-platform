@@ -39,6 +39,29 @@
         "login_message": "Vui lòng đăng nhập"
       }
     },
+    "shop": {
+      "page": {
+        "title": "Cửa hàng",
+        "subtitle": "Khám phá hàng ngàn sản phẩm chất lượng cao"
+      },
+      "sidebar": {
+        "categories_title": "Danh mục",
+        "sort_title": "Sắp xếp",
+        "all_products": "Tất cả sản phẩm"
+      },
+      "sort": {
+        "newest": "Mới nhất",
+        "price_asc": "Giá: Thấp đến cao",
+        "price_desc": "Giá: Cao đến thấp",
+        "rating": "Đánh giá cao nhất",
+        "bestseller": "Bán chạy nhất"
+      },
+      "grid": {
+        "result_count": "{{count}} sản phẩm",
+        "loading": "Đang tải...",
+        "empty": "Không tìm thấy sản phẩm nào."
+      }
+    },
     "home": {
       "products": {
         "title": "Sản phẩm bán chạy nhất",

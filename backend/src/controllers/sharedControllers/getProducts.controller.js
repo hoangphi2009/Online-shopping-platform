@@ -3,9 +3,10 @@ import { AppError } from "../../utils/error.js";
 
 const getProductsController = async (req, res) => {
   try {
-    const page = parseInt(req.query.page);
-    const limit = parseInt(req.query.limit);
-    const result = await getProductsService(page, limit);
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 12;
+    const { categoryId, sort } = req.query;
+    const result = await getProductsService(page, limit, { categoryId, sort });
     return res.status(200).json({
       message: "Lấy danh sách sản phẩm thành công",
       success: true,

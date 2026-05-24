@@ -12,6 +12,7 @@ import CheckoutPage from "./components/ui/checkout/CheckoutPage.jsx";
 import OrderSuccessPage from "./components/ui/orderSuccess/OrderSuccessPage.jsx";
 import ScrollTop from "./components/control/scroll/ScrollTop.jsx";
 import AccountPage from "./components/ui/account/AccountPage.jsx";
+import ShopPage from "./pages/ShopPage.jsx";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/order-success" element={<OrderSuccessPage />} />
             <Route path="/account" element={<AccountPage />} />
+            <Route path="/shop" element={<ShopPage />} />
           </Route>
 
           <Route element={<AuthLayout />}>

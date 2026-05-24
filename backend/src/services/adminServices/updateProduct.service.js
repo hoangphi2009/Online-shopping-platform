@@ -41,7 +41,7 @@ const updateProductService = async (productId, updateData, updateFiles) => {
                 }
             }
             else {
-                product[key] = value;
+                product[key] = key === 'category' ? Number(value) : value;
             }
         }
 
